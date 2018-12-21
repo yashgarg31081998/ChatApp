@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="google-signin-client_id" content="507343351145-mqbflc9ecc3qsbv25d938hag0csnau5l.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
+
+
+    <style>
+
+            /*li {*/
+
+                /*padding: 5px 15px;*/
+                /*box-shadow: 10px 10px 5px grey;*/
+                /*!*border:10px solid black;*!*/
+            /*}*/
+            /*.shadow*/
+            /*{*/
+                /*padding: 5px 15px;*/
+                /*box-shadow: 2px 5px 2px grey;*/
+                /*!*border:10px solid black;*!*/
+            /*}*/
+
+            /*.footer {*/
+                /*position: fixed;*/
+                /*left: 20%;*/
+                /*bottom:5%;*/
+                /*!*width: 100%;*!*/
+                /*!*background-color: red;*!*/
+                /*!*color: white;*!*/
+                /*text-align: center;*/
+            /*}*/
+
+            .g-signin2{
+                margin-left:45%;
+
+            }
+            #start{
+                margin-left:35%;
+            }
+            .data
+            {
+                display:none
+            }
+            /*#img {*/
+                /*background-color: lightgoldenrodyellow;*/
+                /*width: 300px;*/
+                /*font-size:xx-large;*/
+                /*border: 25px solid burlywood;*/
+                /*padding: 5px;*/
+                /*margin: 25px;*/
+
+            /*}*/
+
+            /*#messages-card-container {*/
+                /*height: calc(100% - 35px);*/
+                /*padding-bottom: 0;*/
+            /*}*/
+            #circle {
+                /*font-size: 20px;*/
+                /*color: #fff;*/
+                /*line-height: 100px;*/
+                /*text-align: center;*/
+                /*background:orangered;*/
+                /*height: 25px;*/
+                /*width: 25px;*/
+                /*background-color: #bbb;*/
+                /*border:1px solid orangered;*/
+                /*border-radius: 50%;*/
+
+            }
+
+
+        </style>
+
+</head>
+<body id="box" >
+<div class="container-fluid h-100">
+    <div class="row justify-content-center h-100">
+        <div class="container" style="margin-top:2%;margin-left:10%">
+            <h1>Chat App</h1>
+            <h4 class="shadow" id="date" style=" width:30%;border:1px solid grey">date:</h4>
+        </div>
+        <main class="mdl-layout__content mdl-color--grey-100">
+            <div class="messages-card-container" class="mdl-cell mdl-cell--12-col mdl-grid">
+
+
+                    <div class="container"  id="google-sign">
+                        <div style="font-size:xx-large;text-align: center">Log In Using Your Google Account</div>
+                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    </div>
+
+
+
+                <button id="start" class="btn btn-primary" style=" text-align:center;display:none;height:15%;width:25%">Let Begin The Chat</button>
+
+                <div class="container ">
+
+                    <!--border:5px solid burlywood;-->
+                    <div id="msg" style="display: none">
+
+                        <div id="img">
+
+                            <img  id="userImg" style="font-style:italic; border-radius: 50%;height:50px;width:50px" alt="Avatar">
+                            <span id="imgText" style="font-size:xx-large;text-align: center"></span>
+                            <br>
+                            <br>
+                        </div>
+
+
+
+                        <div class="col-md-8 col-xl-6 chat">
+
+                            <div class="card">
+
+                                    <div class="card-body msg_card_body">
+                                        <div id="message" >
+
+
+
+                                            <div class="list-group" id="list"></div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+
+                            <div class="card-footer">
+                                <div class="input-group">
+
+                                    <div class="input-group-append">
+                                        <label for="imagefile">
+                                            <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+                                        </label>
+                                    <input type="file" accept="image/x-png,image/gif,image/jpeg"  id="imagefile" style="display: none">
+                                </div>
+                                    <div class="input-group-append">
+                                        <input type="text" id="text" name="" class="form-control type_msg" placeholder="Type your message..."></input>
+                                        <span id="btn" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+                                    </div>
+
+
+
+
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="footer">
+                                <!--<input size="35" type="text" id="text" placeholder="write something">-->
+
+                                <!--<input type="file" id="imagefile">-->
+
+
+
+
+                                <!--<button type="submit" class="btn btn-info" id="btn">Send</button>-->
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div id="last_last" style="display: none">
+
+
+                        <div class="col-md-4 col-xl-3 chat">
+                        <div class="card mb-sm-3 mb-md-0 contacts_card">
+
+                            <span  style="font-size:xx-large;text-align: center; background: #7F7FD5;border-radius: 25px; ">Online Users</span>
+                        <div id="last" class="card-body contacts_body" style="display: none" >
+
+                                <ui class="contacts"  id="users">
+                                </ui>
+
+
+
+
+                        </div>
+                    </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+</div>
+
+<!--style="background-color:floralwhite"-->
+
+
+
+
+</body>
+</html>
