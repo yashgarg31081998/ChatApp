@@ -1,4 +1,4 @@
 # ChatApp
 By using Socket.io
 
-Link of chat app: https://shielded-harbor-90596.herokuapp.com/
+Link of chat app: https://radiant-journey-24938.herokuapp.com/
